@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 import "../styles/home.css"
+import { booksOfBible } from '../bibleBooks.js'
 
-const IntroScreen = (props) => {
+let userVerse = "In the beginning, God created the heavens and the earth.";
+
+const IntroScreen = () => {
 
     const [inputs, setInputs] = useState({
         book: "Genesis",
@@ -9,9 +12,6 @@ const IntroScreen = (props) => {
         verse: "1"
     });
     const [text, setText] = useState("In the beginning, God created the heavens and the earth.");
-
-
-
     const elementRef = useRef(null);
     /*
 fix dynamical font sizing -- maybe just skip for now
@@ -25,7 +25,10 @@ useEffect(() => {
         e.preventDefault();
         fetch("https://bible-api.com/" + inputs.book + "%20" + inputs.chapter + ":" + inputs.verse)
             .then(response => response.json())
-            .then(data => setText(data.text))
+            .then(data => {
+                setText(data.text)
+                userVerse = data.text
+            })
     }
 
     const handleChange = (e) => {
@@ -34,83 +37,78 @@ useEffect(() => {
         setInputs(values => ({ ...values, [name]: value }))
     }
 
-    if (props.show) {
-        return (
-            <>
-                <form onSubmit={handleSubmit}>
-                    <div className="selector-box">
-                        <label>Book
-                            <select
-                                value={inputs.book}
-                                name="book"
-                                onChange={handleChange}>
-                                <option value="Genesis">Genesis</option>
-                                <option value="Exodus">Exodus</option>
-                                <option value="Leviticus">Leviticus</option>
-                                <option value="Numbers">Numbers</option>
-                                <option value="Deuteronomy">Deuteronomy</option>
-                                <option value="Joshua">Joshua</option>
-                                <option value="Joshua">Judges</option>
-                            </select>
-                        </label>
-                        <label>Chapter
-                            <input
-                                type="text"
-                                name="chapter"
-                                value={inputs.chapter || ""}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>Verse
-                            <input
-                                type="text"
-                                name="verse"
-                                value={inputs.verse || ""}
-                                onChange={handleChange}
-                            />
-                        </label>
-                    </div>
-                    <input className="submit-btn" type="submit" value="Enter" />
-                </form>
-                <div className="verse-container" ref={elementRef}>
-                    <p className="user-verse">{text}</p>
+    return (
+        <>
+            <form onSubmit={handleSubmit}>
+                <div className="selector-box">
+                    <label>Book
+                        <select
+                            value={inputs.book}
+                            name="book"
+                            onChange={handleChange}>
+                            {booksOfBible.map((book) => (<option value={book}>{book}</option>))}
+                        </select>
+                    </label>
+                    <label>Chapter
+                        <input
+                            type="text"
+                            name="chapter"
+                            value={inputs.chapter || ""}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <label>Verse
+                        <input
+                            type="text"
+                            name="verse"
+                            value={inputs.verse || ""}
+                            onChange={handleChange}
+                        />
+                    </label>
                 </div>
-            </>
-        )
-    }
+                <input className="submit-btn" type="submit" value="Enter" />
+            </form>
+            <div className="verse-container" ref={elementRef}>
+                <p className="user-verse">{text}</p>
+            </div>
+        </>
+    )
 }
 
-const ImgScreen = (props) => {
-
-    // Conditional rendering for imgification
-    // When false, should render img screen
-    if (!props.show) {
-        return (
-            <>
-                <h1>True</h1>
-            </>
-        )
-    }
-
-
+const ImgScreen = () => {
+    return (
+        <>
+            <div className="img-container">
+                <p className="img-verse">{userVerse}</p>
+            </div>
+        </>
+    )
 }
 
 
 const Home = () => {
-
     const [vis, setVis] = useState(true)
 
     const changeBol = () => {
         setVis(prev => (prev ^ true))
     }
 
-    return (
-        <>
-            <IntroScreen show={vis} />
-            <button onClick={changeBol} className="img-button">Imgify!</button>
-            <ImgScreen show={vis} />
-        </>
-    )
+    if (vis) {
+        return (
+            <>
+                <IntroScreen />
+                <button onClick={changeBol} className="img-button">Imgify!</button>
+            </>
+        )
+    }
+    else {
+        return (
+            <>
+                <button onClick={changeBol} className="back-button">Back</button>
+                <ImgScreen />
+            </>
+        )
+    }
 }
 
 export default Home;

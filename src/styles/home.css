@@ -1,11 +1,13 @@
 form {
-    margin-top: 100px
+    margin-top: 100px;
 }
 
 .selector-box {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 50px;
 }
@@ -18,6 +20,7 @@ form {
     margin: 5px 15px;
     transition: background .25s linear;
     border-radius: 5px;
+    display: inline-block
 }
 
 .selector-box input:focus,
@@ -26,7 +29,9 @@ form {
 }
 
 label {
+    display: inline-block;
     font-size: 30px;
+
 }
 
 .submit-btn {
@@ -72,5 +77,33 @@ label {
 
 .img-button:hover {
     cursor: pointer;
+    background: rgba(136, 192, 255, 0.75)
+}
+
+.back-button {
+    border: none;
+    color: white;
+    background: rgba(218, 207, 88, 0);
+    border-radius: 10px;
+    font-size: 48px;
+    position: relative;
+    left: 100px;
+    transition: background .25s linear
+}
+
+.back-button:hover {
+    cursor: pointer;
     background: rgba(235, 144, 147, .75)
+}
+
+.img-container {
+    height: 400px;
+    width: 400px;
+    margin: 15% auto;
+    text-align: center;
+}
+
+.img-verse {
+    font-size: 3em;
+    color: white;
 }
