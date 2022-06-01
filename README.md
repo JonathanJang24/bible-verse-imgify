@@ -1,3 +1,11 @@
-##Bible Verse Imgifier
+# Bible Verse Imgifier
 
-React-based website that converts bible verses to customizable images
+## Description
+A front-end web app that converts bible verses to customizable images
+
+## Technologies
+- React.JS
+
+## Dependencies
+
+
