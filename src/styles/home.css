@@ -1,0 +1,76 @@
+form {
+    margin-top: 100px
+}
+
+.selector-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.selector-box input,
+.selector-box select {
+    font-size: 30px;
+    border: none;
+    background: #c6e2be;
+    margin: 5px 15px;
+    transition: background .25s linear;
+    border-radius: 5px;
+}
+
+.selector-box input:focus,
+.selector-box select:focus {
+    background: rgb(208, 244, 210);
+}
+
+label {
+    font-size: 30px;
+}
+
+.submit-btn {
+    margin: auto;
+    font-size: 40px;
+    display: block;
+    border: none;
+    color: white;
+    background: rgba(86, 102, 122, 0);
+    border-radius: 10px;
+    transition: background .25s ease-out
+}
+
+.submit-btn:hover {
+    cursor: pointer;
+    background: rgba(115, 129, 147, 0.75);
+}
+
+.verse-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 80vw;
+    margin: auto;
+}
+
+.user-verse {
+    font-size: 48px;
+    text-align: center;
+}
+
+.img-button {
+    border: none;
+    color: white;
+    background: rgba(218, 207, 88, 0);
+    border-radius: 10px;
+    font-size: 48px;
+    display: block;
+    margin: auto;
+    transition: background .25s linear
+}
+
+.img-button:hover {
+    cursor: pointer;
+    background: rgba(235, 144, 147, .75)
+}

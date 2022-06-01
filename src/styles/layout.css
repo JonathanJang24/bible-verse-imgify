@@ -1,0 +1,27 @@
+nav {
+    margin: 10px 0;
+    height: 40px
+}
+
+ul {
+    list-style: none;
+    float: right
+}
+
+li {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 25px;
+    transition: background .5s linear
+}
+
+li:hover {
+    background: rgba(86, 102, 122, .5);
+}
+
+.nav-el {
+    color: white;
+    text-decoration: none;
+}
