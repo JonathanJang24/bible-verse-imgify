@@ -5,7 +5,8 @@ A front-end web app that converts bible verses to customizable images
 
 ## Technologies
 - React.JS
+- JSON API
 
 ## Dependencies
-
+- react-router-dom
 
