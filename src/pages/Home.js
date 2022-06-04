@@ -7,6 +7,7 @@ import bg3 from "../imgs/bg-3.jpg"
 import bg4 from "../imgs/bg-4.jpg"
 import bg5 from "../imgs/bg-5.jpg"
 import bg6 from "../imgs/bg-6.jpg"
+import { getFCP } from 'web-vitals'
 
 let userVerse = "In the beginning, God created the heavens and the earth.";
 
@@ -52,7 +53,7 @@ useEffect(() => {
                             value={inputs.book}
                             name="book"
                             onChange={handleChange}>
-                            {booksOfBible.map((book) => (<option value={book}>{book}</option>))}
+                            {booksOfBible.map((book) => (<option key={book} value={book}>{book}</option>))}
                         </select>
                     </label>
                     <label>Chapter
@@ -84,11 +85,19 @@ useEffect(() => {
 const ImgScreen = () => {
 
     const imgList = [bg1, bg2, bg3, bg4, bg5, bg6]
+    const colList = ["red", "blue", "green", "yellow", "white", "black"]
 
     const [currImg, setCurrImg] = useState(bg1)
+    const [fCol, setFCol] = useState({ color: "white" })
+
     const imgClicked = (e, img) => {
         e.preventDefault();
-        setCurrImg(img)
+        setCurrImg(img);
+    }
+
+    const colClicked = (e, col) => {
+        e.preventDefault();
+        setFCol({ color: col })
     }
 
     return (
@@ -96,14 +105,19 @@ const ImgScreen = () => {
             <div className="editing-grid">
                 <div className="img-container">
                     <img className="img-bg" src={currImg} alt="current-img-bg" />
-                    <p className="img-verse">{userVerse}</p>
-
+                    <p className={`img-verse`} style={fCol} >{userVerse}</p>
                 </div>
 
                 <div className="img-grid">
-                    {imgList.map((bg) => (<img className="img-grid-item" src={bg} alt={bg} onClick={event => imgClicked(event, bg)} />))}
+                    {imgList.map((bg) => (<img className="img-grid-item" src={bg} alt={bg} key={bg} onClick={event => imgClicked(event, bg)} />))}
                 </div>
+                <div className="color-grid">
+                    {colList.map((col) => (<div className="img-grid-item" style={{ background: col }} key={col} onClick={event => colClicked(event, col)}></div>))}
+                </div>
+
             </div>
+            <button className="save-button">Save IMG</button>
+
         </>
     )
 }
