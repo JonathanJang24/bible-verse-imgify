@@ -6,6 +6,7 @@ import bg2 from "../imgs/bg-2.jpg"
 import bg3 from "../imgs/bg-3.jpg"
 import bg4 from "../imgs/bg-4.jpg"
 import bg5 from "../imgs/bg-5.jpg"
+import bg6 from "../imgs/bg-6.jpg"
 
 let userVerse = "In the beginning, God created the heavens and the earth.";
 
@@ -82,27 +83,27 @@ useEffect(() => {
 
 const ImgScreen = () => {
 
+    const imgList = [bg1, bg2, bg3, bg4, bg5, bg6]
+
     const [currImg, setCurrImg] = useState(bg1)
-    const imgClicked = (e) => {
+    const imgClicked = (e, img) => {
         e.preventDefault();
-        setCurrImg(bg4)
+        setCurrImg(img)
     }
 
     return (
         <>
-            <div className="">
-                <div style={{ background: { currImg } }} className="img-container">
+            <div className="editing-grid">
+                <div className="img-container">
+                    <img className="img-bg" src={currImg} alt="current-img-bg" />
                     <p className="img-verse">{userVerse}</p>
+
                 </div>
+
                 <div className="img-grid">
-                    <img className="img-grid-item" src={bg1} alt="background 1" onClick={imgClicked} />
-                    <img className="img-grid-item" src={bg2} alt="background 2" />
-                    <img className="img-grid-item" src={bg3} alt="background 3" />
-                    <img className="img-grid-item" src={bg4} alt="background 4" />
-                    <img className="img-grid-item" src={bg5} alt="background 5" />
+                    {imgList.map((bg) => (<img className="img-grid-item" src={bg} alt={bg} onClick={event => imgClicked(event, bg)} />))}
                 </div>
             </div>
-
         </>
     )
 }
