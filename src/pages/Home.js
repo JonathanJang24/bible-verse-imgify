@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import "../styles/home.css"
+import * as htmlToImage from 'html-to-image'
 import { booksOfBible } from '../bibleBooks.js'
 import bg1 from "../imgs/bg-1.jpg"
 import bg2 from "../imgs/bg-2.jpg"
@@ -7,9 +8,11 @@ import bg3 from "../imgs/bg-3.jpg"
 import bg4 from "../imgs/bg-4.jpg"
 import bg5 from "../imgs/bg-5.jpg"
 import bg6 from "../imgs/bg-6.jpg"
-import { getFCP } from 'web-vitals'
+import download from 'downloadjs'
+
 
 let userVerse = "In the beginning, God created the heavens and the earth.";
+let userRef = "Genesis 1:1"
 
 const IntroScreen = () => {
 
@@ -33,8 +36,9 @@ useEffect(() => {
         fetch("https://bible-api.com/" + inputs.book + "%20" + inputs.chapter + ":" + inputs.verse)
             .then(response => response.json())
             .then(data => {
-                setText(data.text)
-                userVerse = data.text
+                setText(data.text);
+                userVerse = data.text;
+                userRef = data.reference;
             })
     }
 
@@ -100,12 +104,23 @@ const ImgScreen = () => {
         setFCol({ color: col })
     }
 
+    const downImg = (e) => {
+        e.preventDefault();
+        htmlToImage.toPng(document.getElementById("img-container"))
+            .then(function (dataUrl) {
+                download(dataUrl, userRef + '-pic.png');
+            })
+            .catch(function (error) {
+                alert(error)
+            })
+    }
+
     return (
         <>
             <div className="editing-grid">
-                <div className="img-container">
+                <div id="img-container">
                     <img className="img-bg" src={currImg} alt="current-img-bg" />
-                    <p className={`img-verse`} style={fCol} >{userVerse}</p>
+                    <p className='img-verse' style={fCol} >{userVerse}</p>
                 </div>
 
                 <div className="img-grid">
@@ -116,7 +131,7 @@ const ImgScreen = () => {
                 </div>
 
             </div>
-            <button className="save-button">Save IMG</button>
+            <button onClick={downImg} className="save-button">Save IMG</button>
 
         </>
     )
