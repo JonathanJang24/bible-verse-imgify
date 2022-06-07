@@ -1,0 +1,86 @@
+#about-header {
+    text-align: center;
+    font-size: 98px;
+    margin: 200px 0
+}
+
+#section-container {
+    margin: 200px 0;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(3, auto);
+    gap: 100px;
+    justify-content: space-around;
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        left: -300px
+    }
+
+    to {
+        left: 0;
+        opacity: 100%;
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        right: -300px
+    }
+
+    to {
+        opacity: 100%;
+        right: 0
+    }
+}
+
+.bod {
+    overflow-x: hidden
+}
+
+.ls {
+    animation: slideLeft .75s ease-out;
+}
+
+.rs {
+    animation: slideRight .75s ease-out;
+
+}
+
+.diss {
+    opacity: 0%;
+}
+
+.abt-section {
+    height: 600px;
+    width: 600px;
+    background: #F9D4BB;
+    margin: 100px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 15px;
+    font-size: 2vw;
+    text-align: left;
+    box-shadow: 15px 15px rgb(127, 123, 130)
+}
+
+
+.what-block {
+    grid-row: 1;
+
+}
+
+.why-block {
+    text-align: right;
+    grid-row: 2;
+    grid-column: 3;
+    box-shadow: -15px 15px rgb(127, 123, 130)
+}
+
+.who-block {
+    grid-row: 3;
+
+}
