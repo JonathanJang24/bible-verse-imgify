@@ -11,4 +11,5 @@ A front-end web app that converts bible verses to customizable images
 - react-router-dom
 - download.js
 - html-to-image
+- react-icons
 
