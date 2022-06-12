@@ -167,7 +167,7 @@ label {
     background: rgba(218, 207, 88, 0);
     border-radius: 10px;
     font-size: 48px;
-    margin: auto;
+    margin: 0 auto 100px auto;
     display: block;
     transition: background .25s linear;
 }

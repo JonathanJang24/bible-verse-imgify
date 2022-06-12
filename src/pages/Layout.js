@@ -12,9 +12,6 @@ const Layout = () => {
                     <li>
                         <Link className="nav-el" to="/about">About</Link>
                     </li>
-                    <li>
-                        <Link className="nav-el" to="/contact">Contact</Link>
-                    </li>
                 </ul>
             </nav>
 

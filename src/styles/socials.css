@@ -1,0 +1,16 @@
+#socials-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px
+}
+
+#socials-container a {
+    color: #585f84;
+    font-size: 2em;
+    padding: 0 25px
+}
+
+#socials-container a:visited {
+    color: #585f84;
+}

@@ -6,9 +6,8 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
-    "downloadjs": "^1.4.7",
-    "html-to-image": "^1.9.0",
     "react": "^18.1.0",
+    "react-component-export-image": "^1.0.6",
     "react-dom": "^18.1.0",
     "react-icons": "^4.4.0",
     "react-scripts": "5.0.1",
@@ -41,5 +40,6 @@
   },
   "devDependencies": {
     "react-router-dom": "^6.3.0"
-  }
+  },
+  "license": "ISC"
 }

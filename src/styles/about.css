@@ -1,7 +1,30 @@
+#header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #about-header {
-    text-align: center;
+    position: relative;
     font-size: 98px;
-    margin: 200px 0
+    margin: 150px 0;
+    width: 15.3ch;
+    overflow: hidden;
+    animation: moving 3s steps(22), blink .4s step-end infinite alternate;
+    white-space: nowrap;
+    border-right: 3px solid;
+}
+
+@keyframes moving {
+    from {
+        width: 0
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
 }
 
 #section-container {
@@ -85,21 +108,4 @@
 
 .who-block {
     grid-row: 3;
-}
-
-#socials-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 25px 0;
-}
-
-#socials-container a {
-    color: #585f84;
-    font-size: 2em;
-    padding: 0 25px
-}
-
-#socials-container a:visited {
-    color: #585f84;
 }
