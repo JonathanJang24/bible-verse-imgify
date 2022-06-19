@@ -1,5 +1,5 @@
 import "../styles/about.css"
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import useIsInViewport from "../utils/useIsInViewport.js"
 import Socials from "../utils/Socials.js"
 
