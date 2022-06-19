@@ -9,13 +9,15 @@ import './styles/index.css'
 const App = () => {
   return (
     <BrowserRouter>
+
+      {/* Due to routing errors when deploying the app on github pages, must specify the route paths as project-name/ */}
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="bible-verse-imgify/" element={<Layout />} >
           <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
+          <Route path="/bible-verse-imgify/about" element={<About />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 }
 

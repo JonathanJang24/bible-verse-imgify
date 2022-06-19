@@ -138,7 +138,6 @@ const Home = () => {
     const changeBol = () => {
         setVis(prev => (prev ^ true))
     }
-
     if (vis) {
         return (
             <>
