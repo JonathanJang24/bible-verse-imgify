@@ -98,7 +98,7 @@ label {
 
 .editing-grid {
     display: grid;
-    grid-template-columns: repeat(9, calc(100/9)vw);
+    grid-template-columns: repeat(9, auto);
     grid-template-rows: repeat(2, auto);
     width: 100%;
     margin: 0;
