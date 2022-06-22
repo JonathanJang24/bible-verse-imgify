@@ -20,7 +20,7 @@ form {
     margin: 5px 15px;
     transition: background .25s linear;
     border-radius: 5px;
-    display: inline-block
+    display: inline-block;
 }
 
 .selector-box input:focus,
@@ -103,12 +103,9 @@ label {
     width: 100%;
     margin: 0;
     height: 60vh;
-
 }
 
 #img-container {
-    justify-content: center;
-    align-items: center;
     height: 400px;
     width: 400px;
     margin: 10% auto;
@@ -175,5 +172,45 @@ label {
 .save-button:hover {
     cursor: pointer;
     background: rgba(127, 194, 155, .75);
+}
 
+@media screen and (max-width: 600px) {
+    .back-button {
+        left: 25px
+    }
+
+    .editing-grid {
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(2, auto);
+        justify-content: center;
+        align-items: center;
+    }
+
+    #img-container {
+        grid-row: 1;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .img-grid {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .color-grid {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .save-button {
+        margin: 200px auto 100px auto
+    }
+}
+
+@media screen and (max-width:500px) {
+
+    .selector-box input,
+    .selector-box select {
+        width: 25vw
+    }
 }
