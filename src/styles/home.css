@@ -54,9 +54,9 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh;
+    height: fit-content;
     width: 80vw;
-    margin: auto;
+    margin: 150px auto;
 }
 
 .user-verse {
@@ -156,6 +156,13 @@ label {
     grid-auto-rows: min-content;
     gap: 5px;
     grid-column: 9;
+}
+
+.font-size-grid {
+    display: flex;
+    grid-column: 8;
+    justify-content: center;
+    align-items: center;
 }
 
 .save-button {

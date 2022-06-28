@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import "../styles/home.css"
 import { booksOfBible } from '../utils/bibleBooks.js'
 import bg1 from "../imgs/bg-1.jpg"
@@ -27,8 +27,6 @@ const IntroScreen = () => {
     });
     const [text, setText] = useState(localStorage.getItem("text"));
     const elementRef = useRef(null);
-
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -91,11 +89,16 @@ const IntroScreen = () => {
 
 const ImgScreen = () => {
 
+    let charCount = (localStorage.getItem("text")).length
+    let fontNum = 400 / Math.sqrt(charCount) + 1
+
     const imgRef = useRef();
 
     const imgList = [bg1, bg2, bg3, bg4, bg5, bg6]
     const colList = ["red", "blue", "green", "yellow", "white", "black"]
 
+    const [fontSelect, setFontSelect] = useState(fontNum)
+    const [fontSizeStyle, setFontSizeStyle] = useState({ fontSize: fontNum })
     const [currImg, setCurrImg] = useState(bg1)
     const [fCol, setFCol] = useState({ color: "white" })
 
@@ -109,12 +112,18 @@ const ImgScreen = () => {
         setFCol({ color: col })
     }
 
+    const fontSlided = (e) => {
+        setFontSelect(e.target.value);
+        setFontSizeStyle({ fontSize: parseFloat(e.target.value) })
+    }
+
+
     return (
         <>
             <div className="editing-grid">
                 <div ref={imgRef} id="img-container">
                     <img className="img-bg" src={currImg} alt="current-img-bg" />
-                    <p className='img-verse' style={fCol} >{localStorage.getItem("text")}</p>
+                    <p className='img-verse' style={{ ...fCol, ...fontSizeStyle }} >{localStorage.getItem("text")}</p>
                 </div>
 
                 <div className="img-grid">
@@ -123,7 +132,9 @@ const ImgScreen = () => {
                 <div className="color-grid">
                     {colList.map((col) => (<div className="img-grid-item" style={{ background: col }} key={col} onClick={event => colClicked(event, col)}></div>))}
                 </div>
-
+                <div className="font-size-grid">
+                    <input id="font-slider" type="range" min="0" max={fontNum * 1.25} step={fontNum / 25} value={fontSelect} name="font-slider" onChange={e => fontSlided(e)} />
+                </div>
             </div>
             <button onClick={() => exportComponentAsPNG(imgRef, { fileName: userRef + "-img" })} className="save-button">Save IMG</button>
 

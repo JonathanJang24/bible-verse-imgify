@@ -113,6 +113,7 @@
 @media screen and (max-width:1100px) {
     #about-header {
         font-size: 10vw;
+        margin: 50px
     }
 
     #section-container {
