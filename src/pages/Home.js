@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import "../styles/home.css"
 import { booksOfBible } from '../utils/bibleBooks.js'
 import bg1 from "../imgs/bg-1.jpg"
@@ -9,6 +9,7 @@ import bg5 from "../imgs/bg-5.jpg"
 import bg6 from "../imgs/bg-6.jpg"
 import Socials from "../utils/Socials.js"
 import { exportComponentAsPNG } from 'react-component-export-image'
+import { FaBan } from 'react-icons/fa'
 
 // dynamic font sizing for img
 
@@ -95,12 +96,14 @@ const ImgScreen = () => {
     const imgRef = useRef();
 
     const imgList = [bg1, bg2, bg3, bg4, bg5, bg6]
-    const colList = ["red", "blue", "green", "yellow", "white", "black"]
 
     const [fontSelect, setFontSelect] = useState(fontNum)
     const [fontSizeStyle, setFontSizeStyle] = useState({ fontSize: fontNum })
     const [currImg, setCurrImg] = useState(bg1)
-    const [fCol, setFCol] = useState({ color: "white" })
+    const [fCol, setFCol] = useState("#ffffff")
+    const [textCol, setTextCol] = useState({ color: "white" })
+    const [textBg, setTextBg] = useState("#000000")
+    const [textBgCol, setTextBgCol] = useState({ background: "transparent" })
 
     const imgClicked = (e, img) => {
         e.preventDefault();
@@ -108,8 +111,8 @@ const ImgScreen = () => {
     }
 
     const colClicked = (e, col) => {
-        e.preventDefault();
-        setFCol({ color: col })
+        setFCol(e.target.value)
+        setTextCol({ color: fCol })
     }
 
     const fontSlided = (e) => {
@@ -117,23 +120,45 @@ const ImgScreen = () => {
         setFontSizeStyle({ fontSize: parseFloat(e.target.value) })
     }
 
+    const textBgSelected = (e) => {
+        setTextBg(e.target.value)
+        setTextBgCol({ background: textBg })
+    }
+
+    const setTextBgTrans = () => {
+        setTextBgCol({ background: "transparent" })
+    }
+
+    const randomCustom = () => {
+
+    }
 
     return (
         <>
             <div className="editing-grid">
                 <div ref={imgRef} id="img-container">
                     <img className="img-bg" src={currImg} alt="current-img-bg" />
-                    <p className='img-verse' style={{ ...fCol, ...fontSizeStyle }} >{localStorage.getItem("text")}</p>
+                    <p className='img-verse' style={{ ...textCol, ...fontSizeStyle }} ><span style={textBgCol} id="text-highlight">{localStorage.getItem("text")}</span></p>
                 </div>
 
-                <div className="img-grid">
-                    {imgList.map((bg) => (<img className="img-grid-item" src={bg} alt={bg} key={bg} onClick={event => imgClicked(event, bg)} />))}
-                </div>
-                <div className="color-grid">
-                    {colList.map((col) => (<div className="img-grid-item" style={{ background: col }} key={col} onClick={event => colClicked(event, col)}></div>))}
-                </div>
-                <div className="font-size-grid">
-                    <input id="font-slider" type="range" min="0" max={fontNum * 1.25} step={fontNum / 25} value={fontSelect} name="font-slider" onChange={e => fontSlided(e)} />
+                <div className="options-grid">
+                    <div className="img-grid">
+                        {imgList.map((bg) => (<img className="img-grid-item" src={bg} alt={bg} key={bg} onClick={event => imgClicked(event, bg)} />))}
+                    </div>
+                    <div className="color-grid">
+                        <input type="color" id="text-col-selector" value={fCol} name="text-color" onChange={e => colClicked(e)} />
+                    </div>
+                    <div className="font-size-grid">
+                        <h3>Font-size</h3>
+                        <input id="font-slider" type="range" min="1" max={fontNum * 1.25} step={fontNum / 25} value={fontSelect} name="font-slider" onChange={e => fontSlided(e)} />
+                    </div>
+                    <div className="background-text-grid">
+                        <input type="color" id="background-text-selector" value={textBg} name="text-bg-color" onChange={e => textBgSelected(e)} />
+                        <button id="text-bg-transparent-btn" onClick={setTextBgTrans}><FaBan /></button>
+                    </div>
+                    <div className="random-grid">
+                        <button id="random-btn" onClick={randomCustom}>Random</button>
+                    </div>
                 </div>
             </div>
             <button onClick={() => exportComponentAsPNG(imgRef, { fileName: userRef + "-img" })} className="save-button">Save IMG</button>

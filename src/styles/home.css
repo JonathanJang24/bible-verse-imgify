@@ -99,23 +99,28 @@ label {
 .editing-grid {
     display: grid;
     grid-template-columns: repeat(9, auto);
-    grid-template-rows: repeat(2, auto);
     width: 100%;
     margin: 0;
     height: 60vh;
+}
+
+.options-grid {
+    display: grid;
+    grid-column: 8;
+    grid-template-columns: repeat(2, 150px);
+    grid-template-rows: repeat(3, max-content);
+    gap: 50px 0
 }
 
 #img-container {
     height: 400px;
     width: 400px;
     margin: 10% auto;
-    text-align: center;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     grid-column: 5;
-
 }
 
 .img-bg {
@@ -126,13 +131,14 @@ label {
 
 .img-verse {
     font-size: 3em;
+    text-align: center;
     color: white;
     z-index: 1;
 }
 
 .img-grid {
     display: inline-grid;
-    grid-column: 8;
+    grid-column: 1;
     justify-content: center;
     align-items: center;
     grid-template-columns: 40px 40px;
@@ -155,14 +161,67 @@ label {
     grid-template-columns: 40px 40px;
     grid-auto-rows: min-content;
     gap: 5px;
-    grid-column: 9;
+    grid-column: 2;
 }
 
 .font-size-grid {
+    text-align: center;
+    grid-column: 1;
+}
+
+.font-size-grid h3 {
+    padding-bottom: 10px
+}
+
+.background-text-grid {
+    grid-column: 2;
+    grid-row: 2;
     display: flex;
-    grid-column: 8;
     justify-content: center;
     align-items: center;
+    gap: 5px
+}
+
+#background-text-selector {
+    height: 100px
+}
+
+#text-bg-transparent-btn {
+    border: none;
+    color: white;
+    background: transparent;
+    box-sizing: border-box;
+    padding: 0;
+    border-radius: 2px;
+    font-size: 30px;
+    transition: color .5s ease-in-out, transform .5s ease-out;
+    height: 30px
+}
+
+#text-bg-transparent-btn:hover {
+    cursor: pointer;
+    color: #DA4167;
+    transform: rotate(360deg);
+}
+
+.random-grid {
+    grid-column: 1;
+    grid-row: 3;
+    text-align: center;
+}
+
+#random-btn {
+    border: none;
+    color: white;
+    background: transparent;
+    font-size: 25px;
+    border-radius: 5px;
+    transition: background .5s linear;
+}
+
+#random-btn:hover {
+    cursor: pointer;
+    background: rgb(232, 144, 5, .75)
 }
 
 .save-button {
