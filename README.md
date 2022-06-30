@@ -14,5 +14,5 @@ A front-end web app that converts bible verses to customizable images
 - react-icons
 
 
-***Visit the page as of 6/18/22 at:***
+***Visit the page as of 6/30/22 at:***
 https://jonathanjang24.github.io/bible-verse-imgify/
