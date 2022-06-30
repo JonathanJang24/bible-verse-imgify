@@ -97,9 +97,11 @@ const ImgScreen = () => {
 
     const imgList = [bg1, bg2, bg3, bg4, bg5, bg6]
 
+    const [currImg, setCurrImg] = useState(bg1)
+
     const [fontSelect, setFontSelect] = useState(fontNum)
     const [fontSizeStyle, setFontSizeStyle] = useState({ fontSize: fontNum })
-    const [currImg, setCurrImg] = useState(bg1)
+
     const [fCol, setFCol] = useState("#ffffff")
     const [textCol, setTextCol] = useState({ color: "white" })
     const [textBg, setTextBg] = useState("#000000")
@@ -131,6 +133,26 @@ const ImgScreen = () => {
 
     const randomCustom = () => {
 
+        const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
+
+        console.log(Math.random() * (fontNum * 1.25))
+
+        let randImg = imgList[Math.floor(Math.random() * imgList.length)]
+        let randFontSize = Math.random() * ((fontNum * 1.25) - 1) + 1
+        let randFontColor = "#" + genRanHex(6)
+        let randFontBgColor = "#" + genRanHex(6)
+
+        setCurrImg(randImg)
+
+        setFCol(randFontColor)
+        setTextCol({ color: randFontColor })
+
+        setTextBg(randFontBgColor)
+        setTextBgCol({ background: randFontBgColor })
+
+        setFontSelect(randFontSize)
+        setFontSizeStyle({ fontSize: randFontSize })
+
     }
 
     return (
@@ -146,6 +168,7 @@ const ImgScreen = () => {
                         {imgList.map((bg) => (<img className="img-grid-item" src={bg} alt={bg} key={bg} onClick={event => imgClicked(event, bg)} />))}
                     </div>
                     <div className="color-grid">
+                        <h3>Font Color</h3>
                         <input type="color" id="text-col-selector" value={fCol} name="text-color" onChange={e => colClicked(e)} />
                     </div>
                     <div className="font-size-grid">
@@ -153,6 +176,7 @@ const ImgScreen = () => {
                         <input id="font-slider" type="range" min="1" max={fontNum * 1.25} step={fontNum / 25} value={fontSelect} name="font-slider" onChange={e => fontSlided(e)} />
                     </div>
                     <div className="background-text-grid">
+                        <h3>Font Background Color</h3>
                         <input type="color" id="background-text-selector" value={textBg} name="text-bg-color" onChange={e => textBgSelected(e)} />
                         <button id="text-bg-transparent-btn" onClick={setTextBgTrans}><FaBan /></button>
                     </div>
