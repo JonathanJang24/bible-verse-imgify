@@ -30,9 +30,14 @@ const IntroScreen = () => {
     const elementRef = useRef(null);
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
+
         fetch("https://bible-api.com/" + inputs.book + "%20" + inputs.chapter + ":" + inputs.verse)
-            .then(response => response.json())
+            .then((response) => {
+                if (response.ok) {
+                    return response.json()
+                }
+            })
             .then(data => {
                 setText(data.text);
                 userRef = data.reference;
@@ -41,8 +46,13 @@ const IntroScreen = () => {
                 localStorage.setItem("chapter", tempInfo[1])
                 localStorage.setItem("verse", tempInfo[2])
                 localStorage.setItem("text", data.text)
+            }
+            )
+            .catch((error) => {
+                alert("that Bible address doesn't seem to exist...\ntry checking the dead sea scrolls again")
             })
     }
+
 
     const handleChange = (e) => {
         const name = e.target.name;

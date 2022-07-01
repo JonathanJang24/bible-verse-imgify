@@ -22,7 +22,7 @@ const SectionContainer = () => {
 
             <div ref={whyRef} className={`abt-section why-block ${whyVis ? "rs bod" : "diss"}`}>
                 <h2>Why was this made?</h2>
-                <p>Verse Imgifier was inspired by the Image function from The Bible App by Life Church. Personally, I loved to customize and download images to remind me of certain verses that I loved. As I (the developer) continue to grow in technical skills, I hope to add further functionality for more options and convenience.</p>
+                <p>Verse Imgifier was inspired by the Image function from The Bible App by Life Church. Personally, I love to customize and download images to remind me of certain verses that I love. As I (the developer) continue to grow in technical skills, I hope to add further functionality for more options and convenience.</p>
             </div>
 
             <div ref={whoRef} className={`abt-section who-block ${whoVis ? "ls" : "diss"}`}>
