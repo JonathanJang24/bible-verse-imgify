@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import "../styles/home.css"
 import { booksOfBible } from '../utils/bibleBooks.js'
 import bg1 from "../imgs/bg-1.jpg"
@@ -11,13 +11,15 @@ import Socials from "../utils/Socials.js"
 import { exportComponentAsPNG } from 'react-component-export-image'
 import { FaBan } from 'react-icons/fa'
 
-// dynamic font sizing for img
-
 let userRef = "Genesis 1:1"
-localStorage.setItem("book", "Genesis")
-localStorage.setItem("chapter", "1")
-localStorage.setItem("verse", "1")
-localStorage.setItem("text", "In the beginning, God created the heavens and the earth.")
+
+// basic lifecycle for user rendering
+if (localStorage.getItem("verse") === null) {
+    localStorage.setItem("book", "Genesis")
+    localStorage.setItem("chapter", "1")
+    localStorage.setItem("verse", "1")
+    localStorage.setItem("text", "In the beginning, God created the heavens and the earth.")
+}
 
 const IntroScreen = () => {
 
@@ -27,7 +29,12 @@ const IntroScreen = () => {
         verse: localStorage.getItem("verse")
     });
     const [text, setText] = useState(localStorage.getItem("text"));
+
     const elementRef = useRef(null);
+
+    useEffect(() => {
+
+    }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault()
