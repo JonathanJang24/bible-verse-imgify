@@ -32,10 +32,6 @@ const IntroScreen = () => {
 
     const elementRef = useRef(null);
 
-    useEffect(() => {
-
-    }, [])
-
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -124,30 +120,36 @@ const ImgScreen = () => {
     const [textBg, setTextBg] = useState("#000000")
     const [textBgCol, setTextBgCol] = useState({ background: "transparent" })
 
+    // on image change
     const imgClicked = (e, img) => {
         e.preventDefault();
         setCurrImg(img);
     }
 
+    // on font color change
     const colClicked = (e, col) => {
         setFCol(e.target.value)
-        setTextCol({ color: fCol })
+        setTextCol({ color: e.target.value })
     }
 
+    // on font size change
     const fontSlided = (e) => {
         setFontSelect(e.target.value);
         setFontSizeStyle({ fontSize: parseFloat(e.target.value) })
     }
 
+    // on font background color change
     const textBgSelected = (e) => {
         setTextBg(e.target.value)
-        setTextBgCol({ background: textBg })
+        setTextBgCol({ background: e.target.value })
     }
 
+    // background transparent
     const setTextBgTrans = () => {
         setTextBgCol({ background: "transparent" })
     }
 
+    // random roll of combination
     const randomCustom = () => {
 
         const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
@@ -169,7 +171,6 @@ const ImgScreen = () => {
 
         setFontSelect(randFontSize)
         setFontSizeStyle({ fontSize: randFontSize })
-
     }
 
     return (
