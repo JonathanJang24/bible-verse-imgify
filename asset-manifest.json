@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/bible-verse-imgify/static/css/main.1a332f21.css",
-    "main.js": "/bible-verse-imgify/static/js/main.f5f0a4b5.js",
+    "main.js": "/bible-verse-imgify/static/js/main.2c88fb9a.js",
     "static/media/bg-1.jpg": "/bible-verse-imgify/static/media/bg-1.b31ef36e4926bd0ed263.jpg",
     "static/media/bg-2.jpg": "/bible-verse-imgify/static/media/bg-2.916279bb7d103dd4423f.jpg",
     "static/media/bg-3.jpg": "/bible-verse-imgify/static/media/bg-3.bd1d7277b9ab32dd4c9b.jpg",
@@ -10,10 +10,10 @@
     "static/media/bg-4.jpg": "/bible-verse-imgify/static/media/bg-4.44ee33d1a5584670660a.jpg",
     "index.html": "/bible-verse-imgify/index.html",
     "main.1a332f21.css.map": "/bible-verse-imgify/static/css/main.1a332f21.css.map",
-    "main.f5f0a4b5.js.map": "/bible-verse-imgify/static/js/main.f5f0a4b5.js.map"
+    "main.2c88fb9a.js.map": "/bible-verse-imgify/static/js/main.2c88fb9a.js.map"
   },
   "entrypoints": [
     "static/css/main.1a332f21.css",
-    "static/js/main.f5f0a4b5.js"
+    "static/js/main.2c88fb9a.js"
   ]
 }
